@@ -1,0 +1,33 @@
+﻿@model Persoon
+@{
+    ViewData["Title"] = "geenBezoeker";
+}
+
+<h1>Welkom op onze website!</h1>
+<h2>Om de reisbrochures te kunnen opsturen vragen we volgende gegevens:</h2>
+<form asp-action="geenBezoeker" method="post" asp-antiforgery="true">
+    <label asp-for="Naam"></label>
+    <span asp-validation-for="Naam">*</span>
+    <input asp-for="Naam" />
+    <label asp-for="Voornaam"></label>
+    <span asp-validation-for="Voornaam">*</span>
+    <input asp-for="Voornaam" />
+    <label asp-for="Adres"></label>
+    <span asp-validation-for="Adres">*</span>
+    <input asp-for="Adres" />
+    <label asp-for="Postcode"></label>
+    <span asp-validation-for="Postcode">*</span>
+    <input asp-for="Postcode" />
+    <label asp-for="Gemeente"></label>
+    <span asp-validation-for="Gemeente">*</span>
+    <input asp-for="Gemeente" />
+    <label asp-for="Email"></label>
+    <span asp-validation-for="Email">*</span>
+    <input asp-for="Email" />
+    <label asp-for="Telefoon"></label>
+    <span asp-validation-for="Telefoon">*</span>
+    <input asp-for="Telefoon" />
+    <input class="btn btn-success" type="submit" value="Doorsturen" />
+    <div asp-validation-summary="All">Vul volgende velden in:</div>
+</form>
+

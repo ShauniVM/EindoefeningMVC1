@@ -1,0 +1,34 @@
+﻿@model BestemmingModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Brochures</h1>
+    <form asp-action="Toevoegen" method="post">
+        <label>Tik jouw reisbestemming</label>
+        <input asp-for="Bestemming"/>
+        <span asp-validation-for="Bestemming"></span>
+        <input type="submit" value="Toevoegen"/>
+    </form>
+</div>
+
+@{
+    string bestemmingSession = ViewBag.bestemmingen;
+    if (bestemmingSession != null)
+    {
+        List<string> bestemmingen = new List<string>(bestemmingSession.Split(" ").ToList());
+        <h2>Aangevraagde brochures</h2>
+        <table>
+            @{ foreach (var bestemming in bestemmingen)
+                {
+                    <tr>
+                        <td>@bestemming</td>
+                        <td><a asp-action="Wissen" asp-route-bestemming="@bestemming" asp-route-bestemmingen="@bestemmingen"><img src="~/Images/delete.png" alt="delete" /></a></td>
+                    </tr>
+                }
+              }
+         </table>
+         <a asp-action="SessionLeeg" class="btn btn-primary">Brochures aanvragen</a>
+    }
+}
